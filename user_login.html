@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" a href="styles.css">
+</head>
+<body>
+<div class="admin">
+    <a href="admin_login.html">Admin</a>
+</div>
+<div class="container">
+        <img src="Logo.png" alt="logo">
+        <p class="title">University Of Vavuniya<br>IT Center and Library Schedule</p>
+</div>
+<div class="logging">
+   
+    <div class="login-box">
+        <h1>User Logging</h1>
+
+        <form action="login.php" method="post">
+            <input type="text" name="username" placeholder="username" required><br><br>
+            <input type="password" name="password" placeholder="password" required><br><br><br>
+            <button class="btn" type="submit">Logging</button>
+            <img class="female" src="Fimage.png" alt="HomepageImage">
+            <p><a href="change_credentials.php" style="color:white;">Change Username or Password</a></p>
+
+        </form>
+    </div>
+</div>
+
+
+<script>
+  window.onload = function () {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("error") === "1") {
+      const msg = document.createElement("div");
+      msg.textContent = "Incorrect username or password!";
+      msg.style.padding = "12px";
+      msg.style.marginBottom = "15px";
+      msg.style.border = "2px solid red";
+      msg.style.backgroundColor = "#ffe6e6";
+      msg.style.color = "red";
+      msg.style.fontWeight = "bold";
+      msg.style.borderRadius = "8px";
+      msg.style.textAlign = "center";
+      msg.style.animation = "shake 0.3s ease-in-out 2";
+
+      // Insert above the form
+      const form = document.querySelector("form");
+      if (form) {
+        form.parentNode.insertBefore(msg, form);
+      }
+
+      // Clear error from URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    
+    document.head.appendChild(shakeStyle);
+  };
+</script>
+
+</body>
+</html>
